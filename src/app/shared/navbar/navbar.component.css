@@ -1,0 +1,9 @@
+.information {
+    text-align: center;
+    margin: auto;
+}
+
+.iconos {
+    display: flex;
+    justify-content: center;
+}
