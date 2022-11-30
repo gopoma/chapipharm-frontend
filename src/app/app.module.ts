@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { PaymentsModule } from './payments/payments.module';
 import { PharmacyModule } from './pharmacy/pharmacy.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,7 +19,8 @@ import { SharedModule } from './shared/shared.module';
     RouterModule,
     SharedModule,
     PharmacyModule,
-    PaymentsModule
+    PaymentsModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

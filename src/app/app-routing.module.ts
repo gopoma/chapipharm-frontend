@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pharmacy/pages/home/home.component';
 import { NosotrosComponent } from './pharmacy/pages/nosotros/nosotros.component';
 import { ProductosComponent } from './pharmacy/pages/productos/productos.component';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { RegisterComponent } from './auth/pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,12 @@ const routes: Routes = [
   },
   {
     path: 'nosotros', component: NosotrosComponent
+  },
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'register', component: RegisterComponent
   },
   {
     path: '**', redirectTo: 'home'

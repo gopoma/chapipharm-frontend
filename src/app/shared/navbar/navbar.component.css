@@ -1,9 +1,17 @@
-.information {
-    text-align: center;
-    margin: auto;
+
+.color {
+    margin: 0;
+    padding: 10px;
+    background-color: rgb(165, 228, 228);
 }
 
-.iconos {
+
+.nav-item a{
+    padding: 10px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+}
+
+.nav-item a:hover {
+    background-color: rgb(100, 214, 214);
 }
