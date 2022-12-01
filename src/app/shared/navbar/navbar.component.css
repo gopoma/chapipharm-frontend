@@ -15,3 +15,7 @@
 .nav-item a:hover {
     background-color: rgb(100, 214, 214);
 }
+
+.space {
+    margin: 0px 5px 0px 5px;
+}
