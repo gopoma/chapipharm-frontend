@@ -1,1 +1,13 @@
-<p>register works!</p>
+<form (ngSubmit)="registrar()">
+    <input [(ngModel)]="firstName" name="firstName" type="text">
+    <input [(ngModel)]="lastName" name="lastName" type="text">
+    <input [(ngModel)]="displayName" name="displayName" type="text">
+    <input [(ngModel)]="email" name="email" type="email">
+    <input [(ngModel)]="password" name="password" type="password">
+    <input [(ngModel)]="location.country" name="country" type="text">
+    <input [(ngModel)]="location.state" name="state" type="text">
+    <input [(ngModel)]="location.city" name="city" type="text">
+    <input [(ngModel)]="location.district" name="district" type="text">
+    <input [(ngModel)]="file" name="file" type="file">
+    <button type="submit">Registrar</button>
+</form>

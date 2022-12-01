@@ -5,11 +5,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   constructor() { }
 
-  ngOnInit(): void {
+  username : string = "";
+  password : string = "";
+
+  login() {
+    console.log(this.username, " ", this.password);
+    //Aqui deberia hacer el llamado al servidor para verificar el login
   }
 
 }
