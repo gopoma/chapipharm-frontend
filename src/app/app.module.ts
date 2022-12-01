@@ -8,6 +8,8 @@ import { PaymentsModule } from './payments/payments.module';
 import { PharmacyModule } from './pharmacy/pharmacy.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AuthModule } from './auth/auth.module';
     PharmacyModule,
     PaymentsModule,
     AuthModule,
+    AngularMaterialModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
