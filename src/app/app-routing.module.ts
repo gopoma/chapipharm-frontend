@@ -17,10 +17,8 @@ const routes: Routes = [
     path: 'nosotros', component: NosotrosComponent
   },
   {
-    path: 'login', component: LoginComponent
-  },
-  {
-    path: 'register', component: RegisterComponent
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: '**', redirectTo: 'home'

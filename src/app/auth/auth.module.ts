@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule } from '@angular/forms';
+import { AuthRoutingModule } from './auth-routing.module';
 
 
 
@@ -14,10 +15,12 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
+    AuthRoutingModule
   ],
   exports: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }
