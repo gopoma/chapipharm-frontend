@@ -16,6 +16,7 @@ import { ViewUserComponent } from './pages/Users/view-user/view-user.component';
 import { EditUserComponent } from './pages/Users/edit-user/edit-user.component';
 import { DeleteProductComponent } from './pages/Products/delete-product/delete-product.component';
 import { DeleteUserComponent } from './pages/Users/delete-user/delete-user.component';
+import { ButtonBackComponent } from './components/button-back/button-back.component';
 
 
 
@@ -34,7 +35,8 @@ import { DeleteUserComponent } from './pages/Users/delete-user/delete-user.compo
     ViewUserComponent,
     EditUserComponent,
     DeleteProductComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    ButtonBackComponent
   ],
   imports: [
     CommonModule,
