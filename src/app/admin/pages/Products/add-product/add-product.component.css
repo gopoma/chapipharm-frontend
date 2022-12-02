@@ -1,0 +1,11 @@
+.centrar {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.option {
+    width: 150px;
+    margin: 5px 20px;
+}
+
