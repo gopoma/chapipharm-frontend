@@ -14,6 +14,7 @@ interface Location {
 })
 
 
+
 export class RegisterComponent  {
 
   firstName : string = "";
@@ -51,7 +52,7 @@ export class RegisterComponent  {
       .subscribe(resp => {
         if(resp.success){
           this.servicio.post<>(url).subscribe{
-
+            
           }
         }
       }) 
