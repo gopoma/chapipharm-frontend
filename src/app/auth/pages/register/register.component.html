@@ -1,13 +1,97 @@
-<form (ngSubmit)="registrar()">
-    <input [(ngModel)]="firstName" name="firstName" type="text">
-    <input [(ngModel)]="lastName" name="lastName" type="text">
-    <input [(ngModel)]="displayName" name="displayName" type="text">
-    <input [(ngModel)]="email" name="email" type="email">
-    <input [(ngModel)]="password" name="password" type="password">
-    <input [(ngModel)]="location.country" name="country" type="text">
-    <input [(ngModel)]="location.state" name="state" type="text">
-    <input [(ngModel)]="location.city" name="city" type="text">
-    <input [(ngModel)]="location.district" name="district" type="text">
-    <input [(ngModel)]="file" name="file" type="file">
-    <button type="submit">Registrar</button>
-</form>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form">
+            <table>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Nombres" [(ngModel)]="firstName" name="firstName" type="text">
+                        </mat-form-field>                   
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Apellidos" [(ngModel)]="lastName" name="lastName" type="text">
+                        </mat-form-field>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Pasdasasdasas" [(ngModel)]="displayName" name="displayName" type="text">
+                        </mat-form-field>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Email" [(ngModel)]="email" name="email" type="email">
+                        </mat-form-field>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Contraseña" [(ngModel)]="password" name="password" type="password">
+                        </mat-form-field>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="País" [(ngModel)]="location.country" name="country" type="text">
+                        </mat-form-field>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Estado"  [(ngModel)]="location.state" name="state" type="text">
+                        </mat-form-field>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Ciudad" [(ngModel)]="location.city" name="city" type="text">
+                        </mat-form-field>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Distrito" [(ngModel)]="location.district" name="district" type="text">
+                        </mat-form-field>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       
+                            <input matInput placeholder="archivo :v" [(ngModel)]="file" name="file" type="file">
+                        
+                        
+                    </td>
+                </tr>             
+            </table>
+            
+        </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button (click)="registrar()" color="primary">Registrar</button>
+      </mat-card-actions>
+</mat-card>
+
+
