@@ -5,6 +5,7 @@ import { ShowUsersComponent } from './pages/show-users/show-users.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { TableComponent } from './components/table/table.component';
+import { TableUsersComponent } from './components/table-users/table-users.component';
 
 
 
@@ -12,7 +13,8 @@ import { TableComponent } from './components/table/table.component';
   declarations: [
     ShowProductsComponent,
     ShowUsersComponent,
-    TableComponent
+    TableComponent,
+    TableUsersComponent
   ],
   imports: [
     CommonModule,
