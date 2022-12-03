@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,14 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent {
 
-  constructor() { }
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   username : string = "";
   password : string = "";
 
   login() {
-    console.log(this.username, " ", this.password);
-    //Aqui deberia hacer el llamado al servidor para verificar el login
+    this.authService.login(this.username, this.password)
+      .subscribe( resp => {
+        console.log(resp);
+      }, error => {
+        console.log(error);
+      })
   }
 
 }

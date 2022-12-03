@@ -11,6 +11,7 @@ import { ViewUserComponent } from './pages/Users/view-user/view-user.component';
 import { DeleteUserComponent } from './pages/Users/delete-user/delete-user.component';
 import { AddProductComponent } from './pages/Products/add-product/add-product.component';
 import { AddUserComponent } from './pages/Users/add-user/add-user.component';
+import { AdminUsersGuard } from '../guards/admin-users.guard';
 
 const routes: Routes = [
   {
@@ -43,6 +44,8 @@ const routes: Routes = [
       //Rutas para los Usuarios
       {
         path: 'users',
+        canLoad: [ AdminUsersGuard ],
+        canActivate: [ AdminUsersGuard ],
         children: [
           {
             path: '', component: ShowUsersComponent, pathMatch: 'full'

@@ -10,6 +10,7 @@ import { PharmacyModule } from './pharmacy/pharmacy.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     AuthModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
