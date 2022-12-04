@@ -7,11 +7,40 @@
     Hola estoy en home jojo
 </h1>
 
-<div class="carrusel">
-    <div class="imagen-contenedor">
-        <img src="imagen1.jpg" alt="imagen 1" />
-        <img src="imagen2.jpg" alt="imagen 2" />
-        <img src="imagen3.jpg" alt="imagen 3" />
+<div class="slide">
+    <div class="slide-inner">
+        <input class="slide-open" type="radio" id="slide-1" name="slide" aria-hidden="true" hidden="" checked="checked">
+        <div class="slide-item">
+            <img src="https://img.freepik.com/foto-gratis/hermoso-camino-madera-que-impresionantes-arboles-coloridos-bosque_181624-5840.jpg?w=2000">
+        </div>
+
+        <input class="slide-open" type="radio" id="slide-2" name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="https://www.sierralagoresort.com/blog/wp-content/uploads/2022/06/El-Mejor-Lugar-Para-Tomar-Fotos-de-Paisajes-Naturales.jpg">
+        </div>
+
+        <input class="slide-open" type="radio" id="slide-3" name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="https://encolombia.com/wp-content/uploads/2021/12/Que-es-paisaje.jpg">
+        </div>
+
+        <label for="slide-3" class="slide-control prev control-1">&lt;</label>
+        <label for="slide-2" class="slide-control next control-1">&gt;</label>
+        <label for="slide-1" class="slide-control prev control-2">&lt;</label>
+        <label for="slide-3" class="slide-control next control-2">&gt;</label>
+        <label for="slide-2" class="slide-control prev control-3">&lt;</label>
+        <label for="slide-1" class="slide-control next control-3">&gt;</label>
+        <ol class="slide-indicador">
+            <li>
+                <label for="slide-1" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-2" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-3" class="slide-circulo">•</label>
+            </li>
+        </ol>
     </div>
 </div>
 
@@ -27,8 +56,4 @@
     <div class="card-footer">
 
     </div>
-</div>
-
-<div class="container">
-
 </div>
