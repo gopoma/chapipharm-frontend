@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError, map } from 'rxjs/operators';
+import { AddProductComponent } from 'src/app/admin/pages/Products/add-product/add-product.component';
 import { Session } from 'src/app/models/session.interface';
 import { User } from 'src/app/models/user.interface';
 
@@ -19,6 +20,9 @@ export class AuthService {
 
   valid: boolean = false;
   user: User = null!;
+
+  showPanelUsers: boolean = false;
+  showPanelProducts: boolean = false;
 
   get Validate() {
     return this.valid;
@@ -40,6 +44,21 @@ export class AuthService {
       });
   }
 
+  getRole(): boolean[] {
+    if(localStorage.getItem('success') !== null){
+      let aux:string = JSON.parse( localStorage.getItem('success')! ).user.role;
+      if(aux === 'ADMIN'){
+        this.showPanelProducts = true;
+        this.showPanelUsers = true;
+        return [true,true];
+      }else if(aux === 'STOREKEEPER'){
+        this.showPanelProducts = true;
+        this.showPanelUsers = false;
+        return [true,false];
+      }
+    }
+    return [false,false];
+  }
 
 
   isValid() {
@@ -53,6 +72,8 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/logout`,{},{withCredentials:true})
       .subscribe(resp => {
         this.valid = false;
+        this.showPanelProducts = false;
+        this.showPanelUsers = false;
         this.user = undefined!;
         localStorage.removeItem('success');
         this.router.navigate(['/auth/login']);

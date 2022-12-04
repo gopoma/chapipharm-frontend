@@ -19,6 +19,13 @@ export class NavbarComponent implements OnInit {
     return this.authService.isValid();
   }
 
+  showPaneles() {
+    return this.authService.getRole();
+  }
+
+  role() {
+    return this.authService.getRole();
+  }
 
   logout(){
     this.authService.logout();
