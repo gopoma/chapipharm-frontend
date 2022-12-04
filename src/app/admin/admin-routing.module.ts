@@ -12,10 +12,13 @@ import { DeleteUserComponent } from './pages/Users/delete-user/delete-user.compo
 import { AddProductComponent } from './pages/Products/add-product/add-product.component';
 import { AddUserComponent } from './pages/Users/add-user/add-user.component';
 import { AdminUsersGuard } from '../guards/admin-users.guard';
+import { ValidateAuthGuard } from '../guards/validate-auth.guard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [ ValidateAuthGuard ],
+    canLoad: [ ValidateAuthGuard ],
     children: [
       {
         path: 'products',

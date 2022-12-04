@@ -78,7 +78,7 @@
             Register
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="validate()" class="nav-item">
           <a class="nav-link" (click)="logout()">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
               class="bi bi-person-fill-add" viewBox="0 0 16 16">

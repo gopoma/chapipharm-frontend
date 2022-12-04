@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate, CanLoad {
     let aux: boolean = true;
     if(localStorage.getItem('success')){
       aux = false;
-      this.router.navigateByUrl('/home');
+      this.router.navigate(['']);
     }else {
       aux = true;
     }

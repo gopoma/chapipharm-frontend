@@ -9,12 +9,38 @@ import { AuthService } from '../auth/services/auth.service';
 export class ValidateAuthGuard implements CanActivate, CanLoad {
 
   constructor(private authService: AuthService,
-              private router: Router){}
+              private router: Router) {}
 
   canActivate(): Observable<boolean> | boolean{
-    return true;
+    let aux: string = '';
+    let bool: boolean = false;
+    if( localStorage.getItem('success') ){
+      aux = JSON.parse(localStorage.getItem('success')!).user.role;
+      console.log(aux);
+      if(aux === 'STOREKEEPER' || aux === 'ADMIN'){
+        bool = true;
+      }else{
+        this.router.navigate(['/']);
+      }
+    }else{
+      this.router.navigate(['/auth/login']);
+    }
+    return bool;
   }
   canLoad(): Observable<boolean> | boolean {
-    return true;
+    let aux: string = '';
+    let bool: boolean = false;
+    if( localStorage.getItem('success') ){
+      aux = JSON.parse(localStorage.getItem('success')!).user.role;
+      console.log(aux);
+      if(aux === 'STOREKEEPER' || aux === 'ADMIN'){
+        bool = true;
+      }else{
+        this.router.navigate(['/']);
+      }
+    }else{
+      this.router.navigate(['/auth/login']);
+    }
+    return bool;
   }
 }

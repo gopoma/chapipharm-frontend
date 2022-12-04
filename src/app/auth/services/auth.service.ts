@@ -55,6 +55,7 @@ export class AuthService {
         this.valid = false;
         this.user = undefined!;
         localStorage.removeItem('success');
+        this.router.navigate(['/auth/login']);
       }, error => {
         console.log(error);
       })
