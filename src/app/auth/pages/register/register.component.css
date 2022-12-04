@@ -1,0 +1,93 @@
+.signup__page {
+  background-color: skyblue;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup__container {
+  background-color: crimson;
+  min-width: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.signup__header {
+  background-color: slateblue;
+  margin-bottom: 0;
+  padding: 1.2rem;
+  color: #000;
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+.signup-form {
+  background-color: violet;
+  padding: 1.2rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-direction: column;
+}
+
+.signup-form__input {
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.signup-form__btn {
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-out;
+}
+
+.signup-form__btn--submit {
+  color: #000;
+  background-color: rgb(165, 228, 228);
+}
+
+.signup-form__btn--submit:hover {
+  background: rgb(16, 219, 219);
+}
+
+.signup__link {
+  border-radius: 4px;
+  padding: 0.45rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: #FFF;
+  transition: background 0.3s ease-out;
+}
+
+.signup__link--google {
+  background-color: rgb(59, 130, 246);
+}
+
+.signup__link--google:hover {
+  background-color: rgb(37, 99, 235);
+}
+
+.signup__link--facebook {
+  background-color: rgb(30, 64, 175);
+}
+
+.signup__link--facebook:hover {
+  background-color: rgb(30, 58, 138);
+}
+
+.social-network-logo {
+  width: 2rem;
+  height: 2rem;
+}

@@ -7,13 +7,17 @@
 }
 
 .login__container {
+  background-color: slateblue;
   min-width: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .login__header {
+  background-color: crimson;
   margin-bottom: 0;
   padding: 1.2rem;
-  background-color: slateblue;
   color: #000;
   text-align: center;
   font-size: 2.25rem;
@@ -21,11 +25,11 @@
 }
 
 .login-form {
-  background-color: violet;
+  background-color: yellowgreen;
   padding: 1.2rem;
   display: flex;
-  gap: 1.2rem;
   flex-direction: column;
+  gap: 0.75rem;
 }
 
 .login-form__input {
@@ -52,4 +56,38 @@
 
 .login-form__btn--submit:hover {
   background: rgb(16, 219, 219);
+}
+
+.login__link {
+  border-radius: 4px;
+  padding: 0.45rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: #FFF;
+  transition: background 0.3s ease-out;
+}
+
+.login__link--google {
+  background-color: rgb(59, 130, 246);
+}
+
+.login__link--google:hover {
+  background-color: rgb(37, 99, 235);
+}
+
+.login__link--facebook {
+  background-color: rgb(30, 64, 175);
+}
+
+.login__link--facebook:hover {
+  background-color: rgb(30, 58, 138);
+}
+
+.social-network-logo {
+  width: 2rem;
+  height: 2rem;
 }

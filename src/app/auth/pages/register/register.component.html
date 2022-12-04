@@ -1,52 +1,18 @@
-<h1>Hola ????</h1>
-<mat-card class="example-card">
-    <mat-card-header>
-        <mat-card-title>Register</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <form class="example-form">
-            <table>
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Nombres" [(ngModel)]="firstName" name="firstName" type="text">
-                        </mat-form-field>                   
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Apellidos" [(ngModel)]="lastName" name="lastName" type="text">
-                        </mat-form-field>
-                        
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Email" [(ngModel)]="email" name="email" type="email">
-                        </mat-form-field>
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Contraseña" [(ngModel)]="password" name="password" type="password">
-                        </mat-form-field>
-                        
-                    </td>
-                </tr>
-                            
-            </table>
-            
-        </form>
-    </mat-card-content>
-
-    <mat-card-actions>
-        <button mat-raised-button (click)="registrar()" color="primary">Registrar</button>
-      </mat-card-actions>
-</mat-card>
-
-
+<div class="signup__page">
+  <div class="signup__container">
+    <h2 class="signup__header">Registrarte</h2>
+    <form class="signup-form">
+      <input class="signup-form__input" placeholder="Nombre" [(ngModel)]="firstName" name="firstName" type="text">
+      <input class="signup-form__input" placeholder="Apellido" [(ngModel)]="lastName" name="lastName" type="text">
+      <input class="signup-form__input" placeholder="Correo Electrónico" [(ngModel)]="email" name="email" type="email">
+      <input class="signup-form__input" placeholder="Contraseña" [(ngModel)]="password" name="password" type="password">
+      <button class="signup-form__btn signup-form__btn--submit" (click)="registrar()">Registrarte</button>
+    </form>
+    <a class="signup__link signup__link--google" href="https://chapipharm.rj.r.appspot.com/api/auth/google">
+      <img style="border-radius:4px;padding: 0.25rem;background-color:#FFF;" class="social-network-logo" src="https://raw.githubusercontent.com/gopoma/messenger-boy/14d4ad9a05421f9ce70a674048290216ba933600/img/google.svg" alt="Registrarse con Google"><span>Registrarse con Google</span>
+    </a>
+    <a class="signup__link signup__link--facebook" href="https://chapipharm.rj.r.appspot.com/api/auth/facebook">
+      <img class="social-network-logo" src="https://raw.githubusercontent.com/gopoma/messenger-boy/14d4ad9a05421f9ce70a674048290216ba933600/img/facebook.svg" alt="Registrarse con Facebook"><span>Registrarse con Facebook</span>
+    </a>
+  </div>
+</div>

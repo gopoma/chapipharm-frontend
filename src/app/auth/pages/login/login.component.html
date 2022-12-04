@@ -1,11 +1,16 @@
 <div class="login__page">
   <div class="login__container">
     <h2 class="login__header">Iniciar sesión</h2>
-
     <form class="login-form">
-      <input class="login-form__input" placeholder="Username" [(ngModel)]="username" type="text" name="username" required>
-      <input class="login-form__input" placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+      <input class="login-form__input" placeholder="Correo Electrónico" [(ngModel)]="username" type="text" name="username" required>
+      <input class="login-form__input" placeholder="Contraseña" [(ngModel)]="password" type="password" name="password" required>
       <button class="login-form__btn login-form__btn--submit" (click)="login()">Iniciar sesión</button>
     </form>
+    <a class="login__link login__link--google" href="https://chapipharm.rj.r.appspot.com/api/auth/google">
+      <img style="border-radius:4px;padding: 0.25rem;background-color:#FFF;" class="social-network-logo" src="https://raw.githubusercontent.com/gopoma/messenger-boy/14d4ad9a05421f9ce70a674048290216ba933600/img/google.svg" alt="Iniciar sesión con Google"><span>Iniciar sesión con Google</span>
+    </a>
+    <a class="login__link login__link--facebook" href="https://chapipharm.rj.r.appspot.com/api/auth/facebook">
+      <img class="social-network-logo" src="https://raw.githubusercontent.com/gopoma/messenger-boy/14d4ad9a05421f9ce70a674048290216ba933600/img/facebook.svg" alt="Iniciar sesión con Facebook"><span>Iniciar sesión con Facebook</span>
+    </a>
   </div>
 </div>
