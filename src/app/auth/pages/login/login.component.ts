@@ -16,12 +16,7 @@ export class LoginComponent {
   password : string = "";
 
   login() {
-    this.authService.login(this.username, this.password)
-      .subscribe( resp => {
-        console.log(resp);
-      }, error => {
-        console.log(error);
-      })
+    this.authService.login(this.username, this.password);
   }
 
 }

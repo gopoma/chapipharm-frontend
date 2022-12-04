@@ -8,7 +8,7 @@ import { ProductosComponent } from './pharmacy/pages/productos/productos.compone
 
 const routes: Routes = [
   {
-    path: 'home' , component: HomeComponent, pathMatch: 'full' 
+    path: '' , component: HomeComponent, pathMatch: 'full' 
   },
   {
     path: 'productos', component: ProductosComponent
@@ -19,8 +19,8 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    canLoad: [ AuthGuard ],
     canActivate: [ AuthGuard ],
+    canLoad: [ AuthGuard ],
   },
   {
     path: 'admin',
@@ -29,7 +29,7 @@ const routes: Routes = [
     canActivate: [ ValidateAuthGuard ],
   },
   {
-    path: '**', redirectTo: 'home'
+    path: '**', redirectTo: ''
   }
 ];
 
