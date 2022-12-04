@@ -12,11 +12,8 @@ import { User } from 'src/app/models/user.interface';
   providedIn: 'root'
 })
 export class AuthService {
-
   url: string = "https://chapipharm.rj.r.appspot.com/api/auth";
-  constructor(private http: HttpClient, private router: Router) {
-    console.log('recarga');
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   valid: boolean = false;
   user: User = null!;
@@ -29,10 +26,7 @@ export class AuthService {
   }
 
   login(email:string, password: string){
-    return this.http.post<Session>(`${this.url}/login`,{
-      email: email,
-      password: password
-    }, { withCredentials:true })
+    return this.http.post<Session>(`${this.url}/login`, {email: email, password: password}, { withCredentials:true })
       .subscribe(resp => {
         this.valid = resp.success;
         this.user = resp.user;

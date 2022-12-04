@@ -1,28 +1,11 @@
-<mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form class="example-form">
-        <table class="example-full-width" cellspacing="0">
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width">
-              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-          <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
-          </mat-form-field></td>
-        </tr></table>
-      </form>
-      
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button (click)="login()" style="background-color: rgb(165, 228, 228);">Login</button>
-    </mat-card-actions>
-</mat-card>
+<div class="login__page">
+  <div class="login__container">
+    <h2 class="login__header">Iniciar sesión</h2>
 
-
+    <form class="login-form">
+      <input class="login-form__input" placeholder="Username" [(ngModel)]="username" type="text" name="username" required>
+      <input class="login-form__input" placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+      <button class="login-form__btn login-form__btn--submit" (click)="login()">Iniciar sesión</button>
+    </form>
+  </div>
+</div>
