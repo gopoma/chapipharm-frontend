@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 interface Location {
   country: string,
@@ -17,6 +19,8 @@ interface Location {
 
 export class RegisterComponent  {
 
+  constructor(private authService: AuthService, private router:Router){}
+
   firstName : string = "";
   lastName : string = "";
   displayName: string = "";
@@ -34,29 +38,18 @@ export class RegisterComponent  {
 
 
 
-  registrar() {
-    const formData = new FormData();
-    formData.append("firstName", this.firstName);
-    formData.append("lastName", this.lastName);
-    formData.append("displayName", this.displayName);
-    formData.append("email", this.email);
-    formData.append("password", this.password);
-    formData.append("location", JSON.stringify(this.location));
-    formData.append("profilePicture", this.file);
-    console.log(formData.get("profilePicture"));
-    console.log(this.location);
-
-    //hacer el llamado al aservidor pero solo capturar en formData la imagen, lo demás no!
-    /*
-    this.servicio.post<>(url)
+  registrar(){
+    this.authService.register(this.firstName,this.lastName,this.email,this.password)
       .subscribe(resp => {
-        if(resp.success){
-          this.servicio.post<>(url).subscribe{
-            
-          }
-        }
-      }) 
-    */
+        console.log(resp);
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.password = "";
+        this.router.navigate(['/login']);
+      },error => {
+        console.log(error);
+      });
   }
   
 

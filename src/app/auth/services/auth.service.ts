@@ -44,6 +44,10 @@ export class AuthService {
       });
   }
 
+  register(firstName:string, lastName:string, email:string ,password: string) {
+    return this.http.post<any>(`${this.url}/signup`,{firstName,lastName,email,password},{withCredentials: true});
+  }
+
   getRole(): boolean[] {
     if(localStorage.getItem('success') !== null){
       let aux:string = JSON.parse( localStorage.getItem('success')! ).user.role;
