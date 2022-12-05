@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../../../../models/product.interface';
+import { AuthService } from '../../../../auth/services/auth.service';
+import { Category } from '../../../../models/category.interface';
 
 @Component({
   selector: 'app-add-product',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductComponent implements OnInit {
 
-  constructor() { }
+  constructor( private productService: AuthService ) { }
 
   ngOnInit(): void {
+    this.productService.getCategories();
+  }
+
+  category: string = '';
+  categories: Category[] = this.productService.categories;
+
+  createCategory() {
+    this.productService.createCategory(this.category);
   }
 
 }

@@ -4,10 +4,22 @@
         <div class="card-header">
             Create new Product
         </div>
-        <app-card-mod-product></app-card-mod-product>
+        <app-card-mod-product ></app-card-mod-product>
+    </div>
+    <br>
+    <div class="card centrar" style="width: 100%; max-width: 700px;">
+        <div class="card-header">
+            <h2>Add New Category</h2>
+        </div>
+        <div class="card-body">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Category</span>
+                <input type="text" [(ngModel)]="category" name="category" class="form-control" placeholder="Category" aria-label="Category" aria-describedby="basic-addon1">
+            </div>
+        </div>
         <div class="card-footer">
-            <button mat-stroked-button class="option" color="primary">Crear</button>
-            <button mat-stroked-button class="option" color="accent">Cancelar</button>
+            <button mat-stroked-button (click)="createCategory()" class="option" color="primary">Crear</button>
         </div>
     </div>
+    <br>
 </div>

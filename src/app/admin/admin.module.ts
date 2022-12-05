@@ -19,6 +19,7 @@ import { DeleteUserComponent } from './pages/Users/delete-user/delete-user.compo
 import { ButtonBackComponent } from './components/button-back/button-back.component';
 import { CardModUserComponent } from './components/card-mod-user/card-mod-user.component';
 import { CardModProductComponent } from './components/card-mod-product/card-mod-product.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -45,7 +46,8 @@ import { CardModProductComponent } from './components/card-mod-product/card-mod-
   imports: [
     CommonModule,
     AdminRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule
   ],
   exports: [
     AdminRoutingModule

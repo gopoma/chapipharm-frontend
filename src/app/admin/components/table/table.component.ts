@@ -1,21 +1,30 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit, DoCheck } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
 import { Product } from 'src/app/models/product.interface';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements AfterViewInit {
+export class TableComponent implements AfterViewInit, OnInit {
+
+  constructor(private productService: AuthService){}
+
+  ngOnInit(): void {
+    console.log(this.productService.products);
+  }
+
+  products: Product[] = this.productService.products;
 
   /* displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA); */
 
-  displayedColumns: string[] = ['id','name','laboratory','stock','price','offer','options'];
-  dataSource = new MatTableDataSource<Product>(PRODUCTS_DATA);
+  displayedColumns: string[] = ['id','name','laboratory','stock','price','options'];
+  dataSource = new MatTableDataSource<Product>(this.products);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -31,19 +40,19 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const PRODUCTS_DATA: Product[] = [
-  {id: 1, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 2, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 3, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 4, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 5, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 6, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 7, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 8, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 9, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 10, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-  {id: 11, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 6, image: 'none', offer: true, categories:[]},
-]
+const PRODUCTS_DATA: Product[] = []
+  /* {id: 1, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 2, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 3, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 4, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 5, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 6, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 7, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 8, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 9, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 10, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]},
+  {id: 11, name: 'Floxaxona', laboratory: 'Dimexa', stock: 5, price: 15, description: 'hola', image: [], categories:[]}, */
+
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},

@@ -5,24 +5,54 @@
     <form>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Name</span>
-            <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+            <input [(ngModel)]="name" name="name" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
             <span class="input-group-text" id="basic-addon1">Laboratory</span>
-            <input type="text" class="form-control" placeholder="Laboratory" aria-label="Laboratory" aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Category</span>
-            <input type="text" class="form-control" placeholder="Category" aria-label="Category" aria-describedby="basic-addon1">
+            <input [(ngModel)]="laboratory" name="laboratory" type="text" class="form-control" placeholder="Laboratory" aria-label="Laboratory" aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">Stock and Price</span>
-            <input type="number" aria-label="First name" class="form-control">
-            <input type="number" aria-label="Last name" class="form-control">
+            <input [(ngModel)]="stock" name="stock" type="number" aria-label="First name" class="form-control">
+            <input [(ngModel)]="price" name="price" type="number" aria-label="Last name" class="form-control">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">Description</span>
-            <textarea class="form-control" aria-label="With textarea"></textarea>
+            <textarea [(ngModel)]="description" name="description" class="form-control" aria-label="With textarea"></textarea>
+        </div>
+        <div class="input-group mb-3">
+            <input [(ngModel)]="sendImage" name="sendImage" type="text" class="form-control" placeholder="URL Imagen" aria-label="URL Imagen" aria-describedby="button-addon2">
+            <button (click)="addImagen()" class="btn btn-outline-secondary" type="button" id="button-addon2">Agregar Imagen</button>
+        </div>
+        <p *ngFor="let imagen of sendImagenes">
+            {{imagen | slice: 1: 45}}...
+        </p>
+        <div class="input-group mb-3">
+            <button (click)="addCategorie()" class="btn btn-outline-secondary" type="button">Agregar Categoria</button>
+            <select [(ngModel)]="sendCategoria" name="sendCategoria" class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+              <option selected>Elegir Categoria...</option>
+              <option *ngFor="let nombres of misCategories" value="{{nombres._id}}">{{ nombres.name }}</option>
+            </select>
+        </div>
+        <p *ngFor="let cat of sendCategorias">
+            {{cat | slice:1:10}}...
+        </p>
+    </form>
+    <hr>
+    <form>
+        <h2>Eliminar Category</h2>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Ids</label>
+            <select [(ngModel)]="idDelete" name="idDelete" class="form-select" id="inputGroupSelect01">
+                <option selected>Ids...</option>
+                <option *ngFor="let nombres of misCategories" value="{{nombres._id}}">{{ nombres.name }}</option>
+            </select>
+            <button mat-stroked-button (click)="eliminarCategory()" color="accent">Eliminar</button>
         </div>
     </form>
 </div>
+<div class="card-footer">
+    <button mat-stroked-button (click)="createProduct()" class="option" color="primary">Crear</button>
+    <button mat-stroked-button routerLink="../" class="option" color="accent">Cancelar</button>
+</div>
+
    
 

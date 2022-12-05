@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { DoCheck, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
@@ -7,12 +7,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { AddProductComponent } from 'src/app/admin/pages/Products/add-product/add-product.component';
 import { Session } from 'src/app/models/session.interface';
 import { User } from 'src/app/models/user.interface';
+import { Category } from '../../models/category.interface';
+import { Product } from '../../models/product.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  url: string = "https://chapipharm.rj.r.appspot.com/api/auth";
+export class AuthService implements DoCheck{
+  url: string = "https://chapipharm.rj.r.appspot.com/api";
   constructor(private http: HttpClient, private router: Router) {}
 
   isLoggedIn: boolean = false;
@@ -25,7 +27,7 @@ export class AuthService {
   };
 
   login(email:string, password: string){
-    return this.http.post<Session>(`${this.url}/login`, {email: email, password: password}, {withCredentials:true})
+    return this.http.post<Session>(`${this.url}/auth/login`, {email: email, password: password}, {withCredentials:true})
       .subscribe(
         (resp:Session) => {
           this.isLoggedIn = resp.success;
@@ -40,12 +42,12 @@ export class AuthService {
   }
 
   register(firstName:string, lastName:string, email:string ,password: string) {
-    return this.http.post<any>(`${this.url}/signup`,{firstName,lastName,email,password},{withCredentials: true});
+    return this.http.post<any>(`${this.url}/auth/signup`,{firstName,lastName,email,password},{withCredentials: true});
   }
 
   // refrescar el usuario
   validateSession() {
-    const url = `${this.url}/validate`;
+    const url = `${this.url}/auth/validate`;
     return this.http.get<Session>(url, {withCredentials:true})
       .pipe(
         map(resp => {
@@ -62,7 +64,7 @@ export class AuthService {
 
   // refrescar el usuario
   validateRole(minimumRole:string) {
-    const url = `${this.url}/validate`;
+    const url = `${this.url}/auth/validate`;
     return this.http.get<Session>(url, {withCredentials:true})
       .pipe(
         map((resp:any) => {
@@ -89,13 +91,88 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post<any>(`${this.url}/logout`, {}, {withCredentials:true})
+    return this.http.post<any>(`${this.url}/auth/logout`, {}, {withCredentials:true})
       .subscribe(resp => {
         this.isLoggedIn = false;
         this.user = undefined!;
         this.role = null!;
         this.router.navigate(['/auth/login']);
       }, error => {
+        console.log(error);
+      })
+  }
+
+
+
+  categorias: Category[] = [];
+  getCategories() {
+    return this.http.get<any>(`${this.url}/categories`,{withCredentials: true})
+      .subscribe(resp => {
+        this.categorias = resp.categories;
+      });;
+  }
+
+  ngDoCheck(){
+    console.log(this.categorias);
+  }
+
+  get categories(){
+    return this.categorias;
+  }
+
+  createCategory(category: string) {
+    return this.http.post<any>(`${this.url}/categories`,{name: category}, {withCredentials: true})
+      .subscribe(resp => {
+        console.log(resp.category);
+        this.categorias.push(resp.category);
+        this.getCategories();
+      }, err => {
+        console.log(err);
+      });;
+  }
+
+  eliminarCategory(id: string){
+    return this.http.delete<any>(`${this.url}/categories/${id}`, {withCredentials: true})
+      .subscribe(resp =>{
+        this.categorias = this.categorias.filter( x => (x._id+"") !== id );
+        console.log(this.categorias);
+      })
+  }
+
+  createProduct(name:string, laboratory:string, stock:number, price:number,description:string,categories:string[], imagenes:string[]){
+    return this.http.post<Product>(`${this.url}/products`,{
+      name,
+      laboratory,
+      stock,
+      price,
+      description,
+      categories,
+      images: imagenes
+    },{withCredentials: true});
+  }
+
+  myProducts:Product[] = [];
+
+  get products() {
+    return this.myProducts;
+  }
+
+  getProducts(){
+    return this.http.get<any>(`${this.url}/products`, {withCredentials: true})
+      .subscribe(resp => {
+        this.myProducts = resp.products;
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  deleteProduct(id:string){
+    return this.http.delete<any>(`${this.url}/products/${id}`, {withCredentials:true})
+      .subscribe(resp =>{
+        console.log(resp);
+        this.myProducts = this.myProducts.filter(( x:Product ) => x._id !== id)
+        this.router.navigate(['admin/products']);
+      }, error =>{
         console.log(error);
       })
   }

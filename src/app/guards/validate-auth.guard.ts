@@ -12,6 +12,7 @@ export class ValidateAuthGuard implements CanActivate, CanLoad {
               private router: Router) {}
 
   canActivate(): Observable<boolean> | boolean{
+    this.authService.getProducts();
     return this.authService.validateRole("STOREKEEPER")
       .pipe(
         tap((valid) => {
@@ -22,6 +23,7 @@ export class ValidateAuthGuard implements CanActivate, CanLoad {
       );
   }
   canLoad(): Observable<boolean> | boolean {
+    this.authService.getProducts();
     return this.authService.validateRole("STOREKEEPER")
       .pipe(
         tap((valid) => {
