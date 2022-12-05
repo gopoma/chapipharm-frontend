@@ -1,14 +1,15 @@
 <mat-card-header style="justify-content: center;">
-  <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title>{{expProduct.name}}</mat-card-title>
   <mat-card-subtitle>{{ expProduct._id | slice:0:10 }} | {{expProduct.laboratory}}</mat-card-subtitle>
 </mat-card-header>
-<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+<img mat-card-image src="{{imagenes[0]}}" alt="Photo of a Shiba Inu">
 <mat-card-content style="text-align: center;">
+  <h2>Description:</h2>
   <p>
     {{expProduct.description}}
   </p>
-  <p *ngFor="let categoria of categories" class="h5">
+  <h2>Categories:</h2>
+  <p *ngFor="let categoria of categories">
     {{categoria.name}}
   </p>
   <p class="h5">

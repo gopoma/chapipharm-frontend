@@ -17,11 +17,14 @@ export class CardProductComponent implements OnInit{
 
   @Input() expProduct: Product = null!;
   categories: Category[] = null!
+  imagenes: string[] = [];
 
   ngOnInit(){
     let aux:string[] = this.expProduct.categories;
     let aux2:string = JSON.stringify(aux);
     this.categories = JSON.parse(aux2);
+    this.imagenes = this.expProduct.images!;
+    console.log(this.imagenes);
   }
 
   

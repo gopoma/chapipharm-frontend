@@ -1,13 +1,6 @@
 <app-button-back></app-button-back>
 <div class="container-fluid">
-    <div class="card centrar" style="width: 100%; max-width: 700px;">
-        <div class="card-header">
-            Edit my Product
-        </div>
-        <app-card-mod-product></app-card-mod-product>
-        <div class="card-footer">
-            <button mat-stroked-button class="option" color="primary">Editar</button>
-            <button mat-stroked-button class="option" color="accent">Cancelar</button>
-        </div>
-    </div>
+    
+    <app-card-mod-product [datos]="product" ></app-card-mod-product>
+    
 </div>

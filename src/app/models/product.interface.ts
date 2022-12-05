@@ -7,7 +7,7 @@ export interface Product {
   stock       : number;
   price       : number;
   description : string;
-  image    ?  : string[];
+  images   ?  : string[];
   offer    ?  : boolean;
   categories  : string[],
 }

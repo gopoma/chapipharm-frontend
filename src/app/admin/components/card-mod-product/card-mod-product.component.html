@@ -1,58 +1,90 @@
 
-
-
+<div class="card centrar" style="width: 100%; max-width: 700px;">
+    <div class="card-header">
+        {{boton}} Product
+    </div>
 <div class="card-body">
     <form>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Name</span>
-            <input [(ngModel)]="name" name="name" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
-            <span class="input-group-text" id="basic-addon1">Laboratory</span>
-            <input [(ngModel)]="laboratory" name="laboratory" type="text" class="form-control" placeholder="Laboratory" aria-label="Laboratory" aria-describedby="basic-addon1">
+        <div *ngIf="showEdit">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Name</span>
+                <input [(ngModel)]="name" name="name" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon1">Laboratory</span>
+                <input [(ngModel)]="laboratory" name="laboratory" type="text" class="form-control" placeholder="Laboratory" aria-label="Laboratory" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Stock and Price</span>
+                <input [(ngModel)]="stock" name="stock" type="number" aria-label="First name" class="form-control">
+                <input [(ngModel)]="price" name="price" type="number" aria-label="Last name" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Description</span>
+                <textarea [(ngModel)]="description" name="description" class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            <div class="input-group mb-3">
+                <input [(ngModel)]="sendImage" name="sendImage" type="text" class="form-control" placeholder="URL Imagen" aria-label="URL Imagen" aria-describedby="button-addon2">
+                <button (click)="addImagen()" class="btn btn-outline-secondary" type="button" id="button-addon2">Agregar Imagen</button>
+                <button (click)="deleteImagen()" class="btn btn-outline-secondary" type="button" id="button-addon2">Borrar Imagen</button>
+            </div>
+            <p *ngFor="let imagen of sendImagenes">
+                {{imagen | slice: 0: 45}}...
+            </p>
         </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text">Stock and Price</span>
-            <input [(ngModel)]="stock" name="stock" type="number" aria-label="First name" class="form-control">
-            <input [(ngModel)]="price" name="price" type="number" aria-label="Last name" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text">Description</span>
-            <textarea [(ngModel)]="description" name="description" class="form-control" aria-label="With textarea"></textarea>
-        </div>
-        <div class="input-group mb-3">
-            <input [(ngModel)]="sendImage" name="sendImage" type="text" class="form-control" placeholder="URL Imagen" aria-label="URL Imagen" aria-describedby="button-addon2">
-            <button (click)="addImagen()" class="btn btn-outline-secondary" type="button" id="button-addon2">Agregar Imagen</button>
-        </div>
-        <p *ngFor="let imagen of sendImagenes">
-            {{imagen | slice: 1: 45}}...
-        </p>
         <div class="input-group mb-3">
             <button (click)="addCategorie()" class="btn btn-outline-secondary" type="button">Agregar Categoria</button>
+            <button (click)="deleteCategorie()" class="btn btn-outline-secondary" type="button">Borrar Categoria</button>
             <select [(ngModel)]="sendCategoria" name="sendCategoria" class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
               <option selected>Elegir Categoria...</option>
               <option *ngFor="let nombres of misCategories" value="{{nombres._id}}">{{ nombres.name }}</option>
             </select>
         </div>
-        <p *ngFor="let cat of sendCategorias">
-            {{cat | slice:1:10}}...
+        <p *ngFor="let cat of showCategories">
+            {{cat | slice:0:10}}...
         </p>
     </form>
-    <hr>
-    <form>
+</div>
+    <div class="card-footer">
+        <button mat-stroked-button (click)="realizarPeticion()" class="option" color="primary">{{boton}}</button>
+        <button mat-stroked-button routerLink="../" class="option" color="accent">Cancelar</button>
+    </div>
+</div>
+<br>
+
+
+
+<div class="card centrar" style="width: 100%; max-width: 700px;">
+    <div class="card-header">
         <h2>Eliminar Category</h2>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Ids</label>
+                <select [(ngModel)]="idDelete" name="idDelete" class="form-select" id="inputGroupSelect01">
+                    <option selected>Ids...</option>
+                    <option *ngFor="let nombres of misCategories" value="{{nombres._id}}">{{ nombres.name }}</option>
+                </select>
+                <button mat-stroked-button (click)="eliminarCategory()" color="accent">Eliminar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div class="card centrar" style="width: 100%; max-width: 700px;">
+    <div class="card-header">
+        <h2>Add New Category</h2>
+    </div>
+    <div class="card-body">
         <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Ids</label>
-            <select [(ngModel)]="idDelete" name="idDelete" class="form-select" id="inputGroupSelect01">
-                <option selected>Ids...</option>
-                <option *ngFor="let nombres of misCategories" value="{{nombres._id}}">{{ nombres.name }}</option>
-            </select>
-            <button mat-stroked-button (click)="eliminarCategory()" color="accent">Eliminar</button>
+            <span class="input-group-text" id="basic-addon1">Category</span>
+            <input type="text" [(ngModel)]="category" name="category" class="form-control" placeholder="Category" aria-label="Category" aria-describedby="basic-addon1">
         </div>
-    </form>
+    </div>
+    <div class="card-footer">
+        <button mat-stroked-button (click)="createCategory()" class="option" color="primary">Crear</button>
+    </div>
 </div>
-<div class="card-footer">
-    <button mat-stroked-button (click)="createProduct()" class="option" color="primary">Crear</button>
-    <button mat-stroked-button routerLink="../" class="option" color="accent">Cancelar</button>
-</div>
+<br>
 
    
 
