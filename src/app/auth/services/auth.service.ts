@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { AddProductComponent } from 'src/app/admin/pages/Products/add-product/add-product.component';
 import { Session } from 'src/app/models/session.interface';
 import { User } from 'src/app/models/user.interface';
@@ -21,25 +21,60 @@ export class AuthService {
   showPanelUsers: boolean = false;
   showPanelProducts: boolean = false;
 
+  roles:any = {
+    "REGULAR": 1,
+    "STOREKEEPER": 25,
+    "ADMIN": 125
+  };
+
   get Validate() {
     return this.valid;
   }
 
   login(email:string, password: string){
-    return this.http.post<Session>(`${this.url}/login`, {email: email, password: password}, { withCredentials:true })
-      .subscribe(resp => {
-        this.valid = resp.success;
-        this.user = resp.user;
-        localStorage.setItem('success', JSON.stringify(resp));
-        console.log("Login Correcto");
-        this.router.navigate(['/home']);
-      }, err => {
-        console.log(err);
-      });
+    return this.http.post<Session>(`${this.url}/login`, {email: email, password: password}, {withCredentials:true})
+      .subscribe(
+        (resp:Session) => {
+          console.log("pasí")
+          this.valid = resp.success;
+          this.user = resp.user;
+          localStorage.setItem('success', JSON.stringify(resp));
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   register(firstName:string, lastName:string, email:string ,password: string) {
     return this.http.post<any>(`${this.url}/signup`,{firstName,lastName,email,password},{withCredentials: true});
+  }
+
+  validateSession() {
+    const url = `${this.url}/validate`;
+    return this.http.get<Session>(url, {withCredentials:true})
+      .pipe(
+        map(resp => {
+          return resp.success;
+        }),
+        catchError(() => {
+          return of(false);
+        })
+      )
+  }
+
+  validateRole(minimumRole:string) {
+    const url = `${this.url}/validate`;
+    return this.http.get<Session>(url, {withCredentials:true})
+      .pipe(
+        map((resp:any) => {
+          return this.roles[resp.user.role] >= this.roles[minimumRole];
+        }),
+        catchError(() => {
+          return of(false);
+        })
+      )
   }
 
   getRole(): boolean[] {
@@ -67,7 +102,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post<any>(`${this.url}/logout`,{},{withCredentials:true})
+    return this.http.post<any>(`${this.url}/logout`, {}, {withCredentials:true})
       .subscribe(resp => {
         this.valid = false;
         this.showPanelProducts = false;

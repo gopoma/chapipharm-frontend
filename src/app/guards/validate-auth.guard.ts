@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
-import { map, Observable, of } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 
 @Injectable({
@@ -12,35 +12,23 @@ export class ValidateAuthGuard implements CanActivate, CanLoad {
               private router: Router) {}
 
   canActivate(): Observable<boolean> | boolean{
-    let aux: string = '';
-    let bool: boolean = false;
-    if( localStorage.getItem('success') ){
-      aux = JSON.parse(localStorage.getItem('success')!).user.role;
-      console.log(aux);
-      if(aux === 'STOREKEEPER' || aux === 'ADMIN'){
-        bool = true;
-      }else{
-        this.router.navigate(['/']);
-      }
-    }else{
-      this.router.navigate(['/auth/login']);
-    }
-    return bool;
+    return this.authService.validateRole("STOREKEEPER")
+      .pipe(
+        tap((valid) => {
+          if(!valid) {
+            this.router.navigateByUrl("/");
+          }
+        })
+      );
   }
   canLoad(): Observable<boolean> | boolean {
-    let aux: string = '';
-    let bool: boolean = false;
-    if( localStorage.getItem('success') ){
-      aux = JSON.parse(localStorage.getItem('success')!).user.role;
-      console.log(aux);
-      if(aux === 'STOREKEEPER' || aux === 'ADMIN'){
-        bool = true;
-      }else{
-        this.router.navigate(['/']);
-      }
-    }else{
-      this.router.navigate(['/auth/login']);
-    }
-    return bool;
+    return this.authService.validateRole("STOREKEEPER")
+      .pipe(
+        tap((valid) => {
+          if(!valid) {
+            this.router.navigateByUrl("/");
+          }
+        })
+      );
   }
 }

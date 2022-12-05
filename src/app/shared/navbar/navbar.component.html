@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg color">
   <div class="container-fluid">
-    
+
     <a class="navbar-brand" routerLink="home">
       <img src="../../../assets/logotipo.png" width="50px">
       CHAPIPHARM
@@ -97,7 +97,7 @@
             Register
           </a>
         </li>
-        <li *ngIf="validate()" class="nav-item">
+        <li *ngIf="true" class="nav-item">
           <a class="nav-link" (click)="logout()">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
               class="bi bi-person-fill-add" viewBox="0 0 16 16">
@@ -108,21 +108,21 @@
             </svg>
             Logout
           </a>
-        </li>  
+        </li>
       </ul>
 
       <!--finish login register y compras-->
 
       <div class="space">
       </div>
-      
+
       <!--Busqueda-->
 
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      
+
       <!--Finish Busqueda-->
     </div>
   </div>
