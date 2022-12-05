@@ -43,13 +43,7 @@ export class CardModProductComponent implements OnInit, DoCheck {
   }
 
   createProduct(){
-    this.productService.createProduct(this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias, this.sendImagenes)
-      .subscribe( resp => {
-        console.log(resp);
-        this.router.navigate(['/admin/products']);
-      }, error => {
-        console.log(error);
-      }) 
+    this.productService.createProduct(this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias, this.sendImagenes);
   }
 
   eliminarCategory(){

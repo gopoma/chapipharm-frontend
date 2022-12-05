@@ -140,7 +140,7 @@ export class AuthService implements DoCheck{
   }
 
   createProduct(name:string, laboratory:string, stock:number, price:number,description:string,categories:string[], imagenes:string[]){
-    return this.http.post<Product>(`${this.url}/products`,{
+    return this.http.post<any>(`${this.url}/products`,{
       name,
       laboratory,
       stock,
@@ -148,7 +148,14 @@ export class AuthService implements DoCheck{
       description,
       categories,
       images: imagenes
-    },{withCredentials: true});
+    },{withCredentials: true})
+      .subscribe( resp => {
+        console.log(resp);
+        this.myProducts.push(resp.product!);
+        this.router.navigate(['/admin/products']);
+      }, error => {
+        console.log(error);
+      }) ;
   }
 
   myProducts:Product[] = [];
@@ -164,6 +171,11 @@ export class AuthService implements DoCheck{
       }, error => {
         console.log(error);
       });
+  }
+
+
+  getOneProduct(id:string){
+    return this.http.get<any>(`${this.url}/products/${id}`, {withCredentials: true});
   }
 
   deleteProduct(id:string){

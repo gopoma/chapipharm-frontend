@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../auth/services/auth.service';
+import { Product } from '../../../models/product.interface';
+import { Category } from '../../../models/category.interface';
 
 @Component({
   selector: 'app-card-product',
   templateUrl: './card-product.component.html',
   styleUrls: ['./card-product.component.css']
 })
-export class CardProductComponent implements OnInit {
+export class CardProductComponent implements OnInit{
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() { 
+    
   }
+
+  @Input() expProduct: Product = null!;
+  categories: Category[] = null!
+
+  ngOnInit(){
+    let aux:string[] = this.expProduct.categories;
+    let aux2:string = JSON.stringify(aux);
+    this.categories = JSON.parse(aux2);
+  }
+
+  
 
 }

@@ -1,19 +1,18 @@
 <mat-card-header style="justify-content: center;">
   <div mat-card-avatar class="example-header-image"></div>
-  <mat-card-title>Name of Product</mat-card-title>
-  <mat-card-subtitle>Id: 5 | Laboratory</mat-card-subtitle>
+  <mat-card-title>{{expProduct.name}}</mat-card-title>
+  <mat-card-subtitle>{{ expProduct._id | slice:0:10 }} | {{expProduct.laboratory}}</mat-card-subtitle>
 </mat-card-header>
 <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
 <mat-card-content style="text-align: center;">
   <p>
-    Description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem, minus sapiente! Ea sit nobis, necessitatibus 
-    rem fugiat molestiae quas delectus ratione, ad harum laborum sapiente iusto dolore quam! Eligendi, illo.
+    {{expProduct.description}}
+  </p>
+  <p *ngFor="let categoria of categories" class="h5">
+    {{categoria.name}}
   </p>
   <p class="h5">
-    Offer: true
-  </p>
-  <p class="h5">
-    Stock: 200  Price: 200
+    Stock: {{expProduct.stock}}  Price: {{expProduct.price}}
   </p>
 </mat-card-content>
 
