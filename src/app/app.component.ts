@@ -8,8 +8,7 @@ import { AuthService } from './auth/services/auth.service';
 })
 export class AppComponent implements OnInit{
   constructor( private authService: AuthService ){}
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   title = 'chapipharm';
 }

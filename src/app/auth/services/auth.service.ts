@@ -15,30 +15,22 @@ export class AuthService {
   url: string = "https://chapipharm.rj.r.appspot.com/api/auth";
   constructor(private http: HttpClient, private router: Router) {}
 
-  valid: boolean = false;
+  isLoggedIn: boolean = false;
   user: User = null!;
-
-  showPanelUsers: boolean = false;
-  showPanelProducts: boolean = false;
-
+  role: string = null!;
   roles:any = {
     "REGULAR": 1,
     "STOREKEEPER": 25,
     "ADMIN": 125
   };
 
-  get Validate() {
-    return this.valid;
-  }
-
   login(email:string, password: string){
     return this.http.post<Session>(`${this.url}/login`, {email: email, password: password}, {withCredentials:true})
       .subscribe(
         (resp:Session) => {
-          console.log("pasí")
-          this.valid = resp.success;
+          this.isLoggedIn = resp.success;
           this.user = resp.user;
-          localStorage.setItem('success', JSON.stringify(resp));
+          this.role = resp.user.role!;
           this.router.navigate(['/home']);
         },
         (error) => {
@@ -51,11 +43,15 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/signup`,{firstName,lastName,email,password},{withCredentials: true});
   }
 
+  // refrescar el usuario
   validateSession() {
     const url = `${this.url}/validate`;
     return this.http.get<Session>(url, {withCredentials:true})
       .pipe(
         map(resp => {
+          this.isLoggedIn = resp.success;
+          this.user = resp.user;
+          this.role = resp.user.role!;
           return resp.success;
         }),
         catchError(() => {
@@ -64,11 +60,15 @@ export class AuthService {
       )
   }
 
+  // refrescar el usuario
   validateRole(minimumRole:string) {
     const url = `${this.url}/validate`;
     return this.http.get<Session>(url, {withCredentials:true})
       .pipe(
         map((resp:any) => {
+          this.isLoggedIn = resp.success;
+          this.user = resp.user;
+          this.role = resp.user.role!;
           return this.roles[resp.user.role] >= this.roles[minimumRole];
         }),
         catchError(() => {
@@ -77,38 +77,23 @@ export class AuthService {
       )
   }
 
-  getRole(): boolean[] {
-    if(localStorage.getItem('success') !== null){
-      let aux:string = JSON.parse( localStorage.getItem('success')! ).user.role;
-      if(aux === 'ADMIN'){
-        this.showPanelProducts = true;
-        this.showPanelUsers = true;
-        return [true,true];
-      }else if(aux === 'STOREKEEPER'){
-        this.showPanelProducts = true;
-        this.showPanelUsers = false;
-        return [true,false];
-      }
+  hasMinimumRole(minimumRole: string): boolean {
+    if(!this.role) {
+      return false;
     }
-    return [false,false];
+    return this.roles[this.role] >= this.roles[minimumRole];
   }
 
-
   isValid() {
-    if(localStorage.getItem('success') !== null){
-      return true;
-    }
-    return false;
+    return this.isLoggedIn;
   }
 
   logout() {
     return this.http.post<any>(`${this.url}/logout`, {}, {withCredentials:true})
       .subscribe(resp => {
-        this.valid = false;
-        this.showPanelProducts = false;
-        this.showPanelUsers = false;
+        this.isLoggedIn = false;
         this.user = undefined!;
-        localStorage.removeItem('success');
+        this.role = null!;
         this.router.navigate(['/auth/login']);
       }, error => {
         console.log(error);

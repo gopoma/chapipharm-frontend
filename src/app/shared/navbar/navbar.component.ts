@@ -8,23 +8,19 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService) { 
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    console.log("This is a new message");
+    this.authService.validateSession().subscribe();
   }
 
   validate() {
     return this.authService.isValid();
   }
 
-  showPaneles() {
-    return this.authService.getRole();
-  }
-
-  role() {
-    return this.authService.getRole();
+  hasMinimumRole(minimumRole:string) {
+    return this.authService.hasMinimumRole(minimumRole);
   }
 
   logout(){
