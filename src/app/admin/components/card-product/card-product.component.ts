@@ -33,14 +33,12 @@ export class CardProductComponent implements OnInit{
       this.productService.get(this.id).subscribe({
         next: (resp:any) => {
           this.product = resp.product;
-          console.log(resp.product);
         },
         error: (err) => {
           console.log(err);
         }
       });
     });
-    console.log(this.product);
   }
 
   

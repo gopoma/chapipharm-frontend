@@ -2,13 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { DoCheck, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
-import { AddProductComponent } from 'src/app/admin/pages/Products/add-product/add-product.component';
 import { Session } from 'src/app/models/session.interface';
 import { User } from 'src/app/models/user.interface';
 import { Category } from '../../models/category.interface';
 import { Product } from '../../models/product.interface';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -33,10 +32,21 @@ export class AuthService implements DoCheck{
           this.isLoggedIn = resp.success;
           this.user = resp.user;
           this.role = resp.user.role!;
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Logeado Correctamente',
+            showConfirmButton: false,
+            timer: 2500
+          });
           this.router.navigate(['/home']);
         },
         (error) => {
-          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.error.messages,
+          })
         }
       );
   }

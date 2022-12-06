@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 interface Location {
   country: string,
@@ -46,9 +47,14 @@ export class RegisterComponent  {
         this.lastName = "";
         this.email = "";
         this.password = "";
+        Swal.fire(resp.messages[0]);
         this.router.navigate(['/login']);
       },error => {
-        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.messages,
+        });
       });
   }
   

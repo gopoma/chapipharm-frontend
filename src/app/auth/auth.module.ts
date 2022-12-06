@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
-
 @NgModule({
   declarations: [
     LoginComponent,
