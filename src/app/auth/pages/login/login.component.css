@@ -1,5 +1,5 @@
 .login__page {
-  background-color: skyblue;
+  background-color: #DFF;
   min-height: 90vh;
   display: flex;
   justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 .login__container {
-  background-color: slateblue;
+  background-color: #AAB7B8;
   min-width: 25rem;
   display: flex;
   flex-direction: column;
@@ -15,17 +15,17 @@
 }
 
 .login__header {
-  background-color: crimson;
+  background-color: #34495E;
   margin-bottom: 0;
   padding: 1.2rem;
-  color: #000;
+  color: #FFF;
   text-align: center;
   font-size: 2.25rem;
   font-weight: bold;
 }
 
 .login-form {
-  background-color: yellowgreen;
+  background-color: #7D0B0B;
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -51,11 +51,11 @@
 
 .login-form__btn--submit {
   color: #000;
-  background-color: rgb(165, 228, 228);
+  background-color: #AAB7B8;
 }
 
 .login-form__btn--submit:hover {
-  background: rgb(16, 219, 219);
+  background: #FFF;
 }
 
 .login__link {

@@ -1,1 +1,13 @@
-<p>productos works!</p>
+<section class="products__container">
+  <section class="wrapper">
+    <h2 class="products__title">Nuestros Productos</h2>
+    <section class="products">
+      <article class="product" *ngFor="let product of products">
+        <img class="product__img" src="{{product.images[0]}}" alt="">
+        <h4 class="product__laboratory">{{product.laboratory}}</h4>
+        <a routerLink="/products/{{product._id}}" class="product__name">{{product.name}}</a>
+        <p class="product__price">S/. {{product.price}}</p>
+      </article>
+    </section>
+  </section>
+</section>

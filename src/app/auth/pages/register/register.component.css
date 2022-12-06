@@ -1,5 +1,5 @@
 .signup__page {
-  background-color: skyblue;
+  background-color: #DFF;
   min-height: 90vh;
   display: flex;
   justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 .signup__container {
-  background-color: crimson;
+  background-color: #AAB7B8;
   min-width: 25rem;
   display: flex;
   flex-direction: column;
@@ -15,17 +15,17 @@
 }
 
 .signup__header {
-  background-color: slateblue;
+  background-color: #34495E;
   margin-bottom: 0;
   padding: 1.2rem;
-  color: #000;
+  color: #FFF;
   text-align: center;
   font-size: 2.25rem;
   font-weight: bold;
 }
 
 .signup-form {
-  background-color: violet;
+  background-color: #7D0B0B;
   padding: 1.2rem;
   display: flex;
   gap: 0.75rem;

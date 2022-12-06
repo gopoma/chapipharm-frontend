@@ -1,0 +1,20 @@
+<section class="product__container" *ngIf="product; else productLoader">
+  <section class="wrapper">
+    <section class="product">
+      <a class="product__link" routerLink="/productos">Regresar</a>
+      <img class="product__img" src="{{product.images[0]}}" alt="{{product.name}}">
+      <h4 class="product__laboratory">{{product.laboratory}}</h4>
+      <h3 class="product__name">{{product.name}}</h3>
+      <p class="product__description">{{product.description}}</p>
+      <p class="product__price">S/. {{product.price}}</p>
+      <p class="product__stock">Stock: {{product.stock}}</p>
+      <h4 class="product__tag">Muestras:</h4>
+      <section class="product__samples">
+        <img class="product__sample" src="{{image}}" *ngFor="let image of product.images"/>
+      </section>
+    </section>
+  </section>
+</section>
+<ng-template #productLoader>
+  Cargando Producto...
+</ng-template>

@@ -4,11 +4,15 @@ import { AuthGuard } from './guards/auth.guard';
 import { ValidateAuthGuard } from './guards/validate-auth.guard';
 import { HomeComponent } from './pharmacy/pages/home/home.component';
 import { NosotrosComponent } from './pharmacy/pages/nosotros/nosotros.component';
+import { ProductComponent } from './pharmacy/pages/product/product.component';
 import { ProductosComponent } from './pharmacy/pages/productos/productos.component';
 
 const routes: Routes = [
   {
-    path: '' , component: HomeComponent, pathMatch: 'full' 
+    path: '' , component: HomeComponent, pathMatch: 'full'
+  },
+  {
+    path: "products/:id", component: ProductComponent
   },
   {
     path: 'productos', component: ProductosComponent
@@ -24,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),   
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
   },
   {
     path: '**', redirectTo: ''
