@@ -1,19 +1,20 @@
 <mat-card-header style="justify-content: center;">
-  <mat-card-title>{{expProduct.name}}</mat-card-title>
-  <mat-card-subtitle>{{ expProduct._id | slice:0:10 }} | {{expProduct.laboratory}}</mat-card-subtitle>
+  <mat-card-title>{{product.name}}</mat-card-title>
+  <mat-card-subtitle>{{ product._id | slice:0:10 }} | {{expProduct.laboratory}}</mat-card-subtitle>
 </mat-card-header>
-<img mat-card-image src="{{imagenes[0]}}" alt="Photo of a Shiba Inu">
+<img mat-card-image src="{{product.images}}" alt="Photo of a Shiba Inu">
 <mat-card-content style="text-align: center;">
   <h2>Description:</h2>
   <p>
-    {{expProduct.description}}
+    {{product.description}}
   </p>
   <h2>Categories:</h2>
-  <p *ngFor="let categoria of categories">
+  <p *ngFor="let categoria of product.categories">
     {{categoria.name}}
   </p>
   <p class="h5">
-    Stock: {{expProduct.stock}}  Price: {{expProduct.price}}
+    Stock: {{product.stock}}  Price: {{product.price}}
   </p>
 </mat-card-content>
+
 
