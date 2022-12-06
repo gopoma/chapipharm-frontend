@@ -1,0 +1,35 @@
+.footer-head{
+    background-color: rgb(20, 189, 201);
+    padding: 10px;
+}
+
+.verification {
+    display: flex;
+    align-items: center;
+}
+
+.verification a{
+    color: black;
+}
+
+.fondo {
+    background-color: rgb(20, 189, 201);
+    padding: 10px 40px;
+}
+
+.options li{
+    border: 0;
+    background-color: rgb(20, 189, 201);
+}
+
+.options li a{
+    color: black;
+}
+
+.verification a{
+    text-decoration: none;
+}
+
+.list-group a{
+    text-decoration: none;
+}
