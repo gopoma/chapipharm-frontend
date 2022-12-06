@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductosComponent } from './pages/productos/productos.component';
-import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { ProductComponent } from './pages/product/product.component';
 
 
@@ -13,7 +12,6 @@ import { ProductComponent } from './pages/product/product.component';
   declarations: [
     HomeComponent,
     ProductosComponent,
-    NosotrosComponent,
     ProductComponent
   ],
   imports: [
@@ -24,7 +22,6 @@ import { ProductComponent } from './pages/product/product.component';
   exports: [
     HomeComponent,
     ProductosComponent,
-    NosotrosComponent
   ]
 })
 export class PharmacyModule { }

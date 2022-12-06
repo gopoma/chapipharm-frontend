@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { ValidateAuthGuard } from './guards/validate-auth.guard';
 import { HomeComponent } from './pharmacy/pages/home/home.component';
-import { NosotrosComponent } from './pharmacy/pages/nosotros/nosotros.component';
 import { ProductComponent } from './pharmacy/pages/product/product.component';
 import { ProductosComponent } from './pharmacy/pages/productos/productos.component';
 
@@ -16,9 +15,6 @@ const routes: Routes = [
   },
   {
     path: 'productos', component: ProductosComponent
-  },
-  {
-    path: 'nosotros', component: NosotrosComponent
   },
   {
     path: 'auth',
