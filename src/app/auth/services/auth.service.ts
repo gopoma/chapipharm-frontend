@@ -158,14 +158,27 @@ export class AuthService implements DoCheck{
       }) ;
   }
 
-  modProduct(id:string, categories:string[]){
+  modProduct(id:string, name:string, laboratory:string, stock:number, price:number,description:string,categories:string[], imagenes:string[]){
     return this.http.patch<any>(`${this.url}/products/${id}`,{
+      name,
+      laboratory,
+      stock,
+      price,
+      description,
       categories,
+      images: imagenes
     },{withCredentials: true})
       .subscribe( resp => {
         console.log(resp);
         for(let i=0; i<this.categories.length; i++){
+          console.log(resp);
           if(this.products[i]._id+"" === id){
+            console.log(resp);
+            this.products[i].name = resp.product.name;
+            this.products[i].laboratory = resp.product.laboratory;
+            this.products[i].stock = resp.product.stock;
+            this.products[i].price = resp.product.price;
+            this.products[i].images = resp.product.images;
             this.products[i].categories = resp.product.categories;
             break;
           }

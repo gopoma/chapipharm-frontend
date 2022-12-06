@@ -1,6 +1,5 @@
 import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
-import { tap, map } from 'rxjs/operators';
 import { Category } from '../../../models/category.interface';
 import { Product } from '../../../models/product.interface';
 import { Router } from '@angular/router';
@@ -72,7 +71,7 @@ export class CardModProductComponent implements OnInit, DoCheck {
     if(this.boton === 'Create'){
       this.productService.createProduct(this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias, this.sendImagenes);
     }else{
-      this.productService.modProduct(this.id,this.sendCategorias);
+      this.productService.modProduct(this.id,this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias, this.sendImagenes);
     }
   }
 

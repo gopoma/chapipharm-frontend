@@ -5,7 +5,7 @@
     </div>
 <div class="card-body">
     <form>
-        <div *ngIf="showEdit">
+        
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Name</span>
                 <input [(ngModel)]="name" name="name" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
@@ -29,7 +29,7 @@
             <p *ngFor="let imagen of sendImagenes">
                 {{imagen | slice: 0: 45}}...
             </p>
-        </div>
+        
         <div class="input-group mb-3">
             <button (click)="addCategorie()" class="btn btn-outline-secondary" type="button">Agregar Categoria</button>
             <button (click)="deleteCategorie()" class="btn btn-outline-secondary" type="button">Borrar Categoria</button>
