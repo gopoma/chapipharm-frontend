@@ -178,6 +178,7 @@ export class AuthService implements DoCheck{
             this.products[i].laboratory = resp.product.laboratory;
             this.products[i].stock = resp.product.stock;
             this.products[i].price = resp.product.price;
+            this.products[i].description = resp.product.description;
             this.products[i].images = resp.product.images;
             this.products[i].categories = resp.product.categories;
             break;
