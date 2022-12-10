@@ -5,7 +5,6 @@
     </div>
 <div class="card-body">
     <form>
-        
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Name</span>
                 <input [(ngModel)]="name" name="name" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
@@ -22,12 +21,12 @@
                 <textarea [(ngModel)]="description" name="description" class="form-control" aria-label="With textarea"></textarea>
             </div>
             <div class="input-group mb-3">
-                <input [(ngModel)]="sendImage" name="sendImage" type="text" class="form-control" placeholder="URL Imagen" aria-label="URL Imagen" aria-describedby="button-addon2">
-                <button (click)="addImagen()" class="btn btn-outline-secondary" type="button" id="button-addon2">Agregar Imagen</button>
-                <button (click)="deleteImagen()" class="btn btn-outline-secondary" type="button" id="button-addon2">Borrar Imagen</button>
+                <input class="form-control" (change)="muestraImagenes()" type="file" id="formFileMultiple" multiple>
+                <button (click)="borrarAll()" class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Delete All</button>
             </div>
-            <p *ngFor="let imagen of sendImagenes">
-                {{imagen | slice: 0: 45}}...
+            <p *ngFor="let imagen of files">
+                {{imagen.name}}
+                <button (click)='borrarImagen(imagen.name)'> Borrar </button>
             </p>
         
         <div class="input-group mb-3">

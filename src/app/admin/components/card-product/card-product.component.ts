@@ -15,8 +15,6 @@ export class CardProductComponent implements OnInit{
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductService) { 
     
   }
-
-  @Input() expProduct: Product = null!;
   categories: Category[] = null!
   imagenes: string[] = [];
   product:any;
@@ -32,6 +30,7 @@ export class CardProductComponent implements OnInit{
       this.id = param['id'];
       this.productService.get(this.id).subscribe({
         next: (resp:any) => {
+          console.log(resp.product.images[0]);
           this.product = resp.product;
         },
         error: (err) => {
