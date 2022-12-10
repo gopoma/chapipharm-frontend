@@ -28,7 +28,7 @@ export class RegisterComponent  {
   email: string = "";
   password: string = "";
 
-  file: File = undefined!;
+  files: File[] = [];
 
   location: Location = {
     country: "",
@@ -40,7 +40,27 @@ export class RegisterComponent  {
 
 
   registrar(){
-    this.authService.register(this.firstName,this.lastName,this.email,this.password)
+    let inputFiles:any = document.getElementById('inputGroupFile04');
+    for(let i=0; i<inputFiles.files.length; i++){
+      this.files[i] = inputFiles.files[i];
+    }
+    this.authService.uploadImages(this.files).subscribe({
+      next: (resp:any) => {
+        console.log(resp);
+        this.authService.register(this.firstName,this.lastName,this.email,this.password).subscribe({
+          next: (resp:any) => {
+            console.log(resp);
+          },
+          error: (err:any) => {
+            console.log(err.error.messages);
+          }
+        })
+      },
+      error: (err:any) => {
+        console.log(err.error.messages);
+      }
+    });
+    /* this.authService.register(this.firstName,this.lastName,this.email,this.password)
       .subscribe(resp => {
         console.log(resp);
         this.firstName = "";
@@ -55,7 +75,7 @@ export class RegisterComponent  {
           title: 'Oops...',
           text: error.error.messages,
         });
-      });
+      }); */
   }
   
 

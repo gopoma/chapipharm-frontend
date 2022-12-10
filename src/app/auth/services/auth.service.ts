@@ -231,4 +231,12 @@ export class AuthService implements DoCheck{
         console.log(error);
       })
   }
+
+  uploadImages(files: File[]){
+    const formData = new FormData();
+    for(let i=0; i<files.length; i++){
+      formData.append('images',files[i]);
+    }
+    return this.http.post<any>(`${this.url}/images`,formData, {withCredentials:true});
+  }
 }
