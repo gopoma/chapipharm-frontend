@@ -3,6 +3,7 @@
 }
 
 .results {
+    z-index: 125;
     background-color: cyan;
     position: absolute;
     top: 100%;
