@@ -2,7 +2,9 @@
   <mat-card-title>{{product?.name}}</mat-card-title>
   <mat-card-subtitle>{{ product?._id | slice:0:10 }} | {{product?.laboratory}}</mat-card-subtitle>
 </mat-card-header>
-<img mat-card-image crossorigin="anonymous" src="{{product?.images[0]}}" alt="Photo of a Shiba Inu">
+<div class="product__img-container">
+  <img class="product__img" mat-card-image src="{{product?.images[0]}}" alt="Photo of a Shiba Inu">
+</div>
 <mat-card-content style="text-align: center;">
   <h2>Description:</h2>
   <p>

@@ -19,7 +19,6 @@ export class SearchbarComponent implements OnInit {
     if(name.trim()) {
       this.productService.search(name).subscribe({
         next: (resp:any) => {
-          console.log(resp.products);
           this.products = resp.products;
         }
       });

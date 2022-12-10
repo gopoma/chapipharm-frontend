@@ -39,7 +39,7 @@
             Panel Productos
           </a>
         </li>
-        <li *ngIf="hasMinimumRole('ADMIN')" class="nav-item">
+        <li *ngIf="hasMinimumRole('ADMIN') && false" class="nav-item">
           <a class="nav-link" routerLink='/admin/users'>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-rolodex" viewBox="0 0 16 16">
               <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
@@ -53,7 +53,7 @@
       <!--Login register y compras-->
 
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li *ngIf="false" class="nav-item">
           <a class="nav-link" routerLink="nosotros">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
               class="bi bi-cart-plus-fill" viewBox="0 0 16 16">

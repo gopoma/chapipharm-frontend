@@ -216,7 +216,6 @@ export class AuthService implements DoCheck{
       });
   }
 
-
   getOneProduct(id:string){
     return this.http.get<any>(`${this.url}/products/${id}`, {withCredentials: true});
   }
