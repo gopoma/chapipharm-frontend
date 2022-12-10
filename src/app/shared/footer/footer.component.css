@@ -1,4 +1,4 @@
-.footer-head{
+.footer-head {
     background-color: rgb(20, 189, 201);
     padding: 10px;
 }
@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.verification a{
+.verification a {
     color: black;
 }
 
@@ -17,19 +17,19 @@
     padding: 10px 40px;
 }
 
-.options li{
+.options li {
     border: 0;
     background-color: rgb(20, 189, 201);
 }
 
-.options li a{
+.options li a {
     color: black;
 }
 
-.verification a{
+.verification a {
     text-decoration: none;
 }
 
-.list-group a{
+.list-group a {
     text-decoration: none;
 }
