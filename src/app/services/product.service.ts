@@ -20,4 +20,8 @@ export class ProductService {
   search(name:string) {
     return this.http.get(`${this.url}/search`, {params:{name}});
   }
+
+  delete(id: string) {
+    return this.http.delete(`${this.url}/${id}`, {withCredentials:true});
+  }
 }

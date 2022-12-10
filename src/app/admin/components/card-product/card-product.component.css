@@ -1,6 +1,10 @@
+.product__img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+.product__img {
+  width: 16rem;
+  height: 16rem;
+}

@@ -1,8 +1,6 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map, tap } from 'rxjs';
-import { AuthService } from '../../../../auth/services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
 import { Product } from '../../../../models/product.interface';
 
 
@@ -12,31 +10,32 @@ import { Product } from '../../../../models/product.interface';
   styleUrls: ['./delete-product.component.css']
 })
 export class DeleteProductComponent implements OnInit {
+  id: string = "";
+  product: Product = null!;
 
-  id: string = '';
-
-  constructor(private activatedRoute: ActivatedRoute, private productService: AuthService) { 
-    this.activatedRoute.params.subscribe( params => {
-      this.id = params['id'];
-    })
-  }
-  
-  products: Product[] = null!;
-  product: Product = null!
+  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
-    this.products = this.productService.myProducts;
-    for(let i=0; i<this.products.length; i++){
-      if(this.products[i]._id == this.id){
-        this.product = this.products[i];
-        break;
-      }
-    }
-    console.log(this.product);
+    this.activatedRoute.params.subscribe((params) => {
+      this.id = params['id'];
+      this.productService.get(this.id).subscribe({
+        next: (resp:any) => {
+          this.product = resp.product;
+        },
+        error: () => {
+          console.log("Not Found");
+          this.router.navigateByUrl("/admin/products");
+        }
+      });
+    });
   }
 
   deleteProduct() {
-    this.productService.deleteProduct(this.id);
+    this.productService.delete(this.id).subscribe({
+      complete: () => {
+        this.router.navigateByUrl("/admin/products");
+      }
+    });
   }
 
 }

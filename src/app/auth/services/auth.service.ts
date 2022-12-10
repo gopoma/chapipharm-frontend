@@ -216,19 +216,7 @@ export class AuthService implements DoCheck{
       });
   }
 
-
   getOneProduct(id:string){
     return this.http.get<any>(`${this.url}/products/${id}`, {withCredentials: true});
-  }
-
-  deleteProduct(id:string){
-    return this.http.delete<any>(`${this.url}/products/${id}`, {withCredentials:true})
-      .subscribe(resp =>{
-        console.log(resp);
-        this.myProducts = this.myProducts.filter(( x:Product ) => x._id !== id)
-        this.router.navigate(['admin/products']);
-      }, error =>{
-        console.log(error);
-      })
   }
 }
