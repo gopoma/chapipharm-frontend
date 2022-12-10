@@ -16,4 +16,8 @@ export class ProductService {
   get(id:string) {
     return this.http.get(`${this.url}/${id}`);
   }
+
+  search(name:string) {
+    return this.http.get(`${this.url}/search`, {params:{name}});
+  }
 }
