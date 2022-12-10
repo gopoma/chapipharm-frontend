@@ -16,7 +16,6 @@ export class ProductosComponent implements OnInit {
     this.productService.getAll().subscribe({
       next: ({success, products}:any) => {
         this.products = products;
-        console.log(this.products);
       },
       error: console.log
     });
