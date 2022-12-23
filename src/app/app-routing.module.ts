@@ -5,6 +5,7 @@ import { ValidateAuthGuard } from './guards/validate-auth.guard';
 import { HomeComponent } from './pharmacy/pages/home/home.component';
 import { ProductComponent } from './pharmacy/pages/product/product.component';
 import { ProductosComponent } from './pharmacy/pages/productos/productos.component';
+import { ShopCarComponent } from './payments/pages/shop-car/shop-car.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'productos', component: ProductosComponent
+  },
+  {
+    path: 'myCar', component: ShopCarComponent
   },
   {
     path: 'auth',

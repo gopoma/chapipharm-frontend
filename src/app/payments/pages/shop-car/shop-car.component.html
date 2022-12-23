@@ -1,0 +1,78 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-8 products-table">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Sub Total</th>
+                    <th scope="col">Options</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of examples">
+                    <th scope="row">
+                        <img class="img-car" src="../../../../assets/img1.jpg">
+                    </th>
+                    <td style="width: 200px;">
+                        This is my ultiamte producto in 500mg
+                        250 soles por unidad, tomelo o dejalo por favor
+                        muchas gracias
+                    </td>
+                    <td>
+                        <section style="display: flex; justify-content: center;">
+                            
+                            <h1 class="cantidad">1</h1>
+                            
+                        </section>
+                    </td>
+                    <td>
+                        <h3 class="cantidad">$/ 125</h3>
+                    </td>
+                    <td>
+                        <p class="delete">Eliminar</p>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-md-4 centrar">
+            <div class="contenedor">
+                <h1>Resumen de Compra</h1>
+                <hr>
+                <div class="text-space">
+                    <p>Descuentos Adicionales</p>
+                    <p>255</p>
+                </div>
+                <div class="text-space">
+                    <p>Descuentos Adicionales</p>
+                    <p>33.90</p>
+                </div>
+                <hr>
+                <div class="text-space">
+                    <p>Total a Pagar</p>
+                    <p>299</p>
+                </div>
+                <div class="text-space">
+                    <p>Exclusivo con OH!</p>
+                    <p>278</p>
+                </div>
+                <hr>
+                <div class="button">
+                    <button class="go_payment">
+                        Ir a comprar
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+

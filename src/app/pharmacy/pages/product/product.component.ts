@@ -11,8 +11,6 @@ export class ProductComponent implements OnInit {
   id: string = null!;
   product: any;
 
-  cantidad:number = 1;
-  showCantOfProduct: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductService, private router: Router) {}
 
@@ -28,18 +26,6 @@ export class ProductComponent implements OnInit {
         }
       });
     });
-  }
-
-  addProduct() {
-    if(this.cantidad < this.product.stock) {
-      this.cantidad++;
-    }
-  }
-
-  deleteProduct() {
-    if(this.cantidad > 1){
-      this.cantidad--;
-    }
   }
 
 }
