@@ -138,7 +138,6 @@ export class CardModProductComponent implements OnInit, DoCheck {
         }
       })
     }else{
-      console.log(this.files.length);
       if(this.files.length !== 0) {
         this.authService.uploadImages(this.files).subscribe({
           next: (resp:any) => {
