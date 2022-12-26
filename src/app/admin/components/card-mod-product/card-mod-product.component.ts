@@ -155,8 +155,7 @@ export class CardModProductComponent implements OnInit, DoCheck {
       }else {
         this.authService.modProduct(this.id,this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias);
       }
-      
-/*this.authService.modProduct(this.id,this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias, this.sendImagenes);*/    }
+    }
   }
 
   eliminarCategory(){
