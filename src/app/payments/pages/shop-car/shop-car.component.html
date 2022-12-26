@@ -13,27 +13,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let i of examples">
+                  <tr *ngFor="let item of items">
                     <th scope="row">
-                        <img class="img-car" src="../../../../assets/img1.jpg">
+                        <img class="img-car" src="{{item.images[0]}}">
                     </th>
                     <td style="width: 200px;">
-                        This is my ultiamte producto in 500mg
-                        250 soles por unidad, tomelo o dejalo por favor
-                        muchas gracias
+                        {{item.name}}
                     </td>
                     <td>
                         <section style="display: flex; justify-content: center;">
                             
-                            <h1 class="cantidad">1</h1>
+                            <h1 class="cantidad">{{item.amount}}</h1>
                             
                         </section>
                     </td>
                     <td>
-                        <h3 class="cantidad">$/ 125</h3>
+                        <h3 class="cantidad">$/ {{item.price*item.amount | number: '0.2-2'}}</h3>
                     </td>
                     <td>
-                        <p class="delete">Eliminar</p>
+                        <p (click)="deleteItem(item._id)" class="delete">Eliminar</p>
                     </td>
                   </tr>
                   
@@ -45,29 +43,16 @@
                 <h1>Resumen de Compra</h1>
                 <hr>
                 <div class="text-space">
-                    <p>Descuentos Adicionales</p>
-                    <p>255</p>
-                </div>
-                <div class="text-space">
-                    <p>Descuentos Adicionales</p>
-                    <p>33.90</p>
-                </div>
-                <hr>
-                <div class="text-space">
                     <p>Total a Pagar</p>
-                    <p>299</p>
+                    <p>{{ priceTotal | number: '0.2-2' }}</p>
                 </div>
-                <div class="text-space">
-                    <p>Exclusivo con OH!</p>
-                    <p>278</p>
-                </div>
+                
                 <hr>
                 <div class="button">
                     <button class="go_payment">
                         Ir a comprar
                     </button>
                 </div>
-                
             </div>
         </div>
     </div>

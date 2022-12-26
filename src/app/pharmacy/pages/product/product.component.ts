@@ -42,7 +42,12 @@ export class ProductComponent implements OnInit {
         },
         error: (err) => {
           console.log(err);
-          this.router.navigateByUrl('/auth/login');
+          if(err.error.messages[0] === 'Cantidad excede al tamaño del Stock') {
+            alert("límite de stock excedido");
+            this.router.navigateByUrl('/productos');
+          }else {
+            this.router.navigateByUrl('/auth/login');
+          }
         }
       });
   }

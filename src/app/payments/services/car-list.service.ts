@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpClientModule, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -19,7 +19,14 @@ export class CarListService {
   }
 
   removeItem(idProduct:string) {
-    return this.httpClient.delete<any>(`${this.baseUrl}/remove`);
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body: {
+        idProduct
+      },
+      withCredentials: true
+    }
+    return this.httpClient.delete<any>(`${this.baseUrl}/remove`,httpOptions);
   }
 
   getItems() {
