@@ -1,6 +1,7 @@
 import { ProductService } from './../../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { CarListService } from '../../../payments/services/car-list.service';
 
 @Component({
   selector: 'app-product',
@@ -12,7 +13,11 @@ export class ProductComponent implements OnInit {
   product: any;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService, private router: Router) {}
+  constructor(
+    private activatedRoute: ActivatedRoute, 
+    private productService: ProductService, 
+    private router: Router,
+    private carlistService: CarListService) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -27,5 +32,20 @@ export class ProductComponent implements OnInit {
       });
     });
   }
+  addCar(id:string) {
+    console.log(id);
+    this.carlistService.addItem(id, 1)
+      .subscribe({
+        next: (resp) => {
+          console.log(resp);
+          this.router.navigateByUrl('/productos');
+        },
+        error: (err) => {
+          console.log(err);
+          this.router.navigateByUrl('/auth/login');
+        }
+      });
+  }
+
 
 }
