@@ -168,7 +168,7 @@ export class AuthService implements DoCheck{
       }) ;
   }
 
-  modProduct(id:string, name:string, laboratory:string, stock:number, price:number,description:string,categories:string[], imagenes:string[]){
+  modProduct(id:string, name:string, laboratory:string, stock:number, price:number,description:string,categories:string[], imagenes?:string[]){
     return this.http.patch<any>(`${this.url}/products/${id}`,{
       name,
       laboratory,

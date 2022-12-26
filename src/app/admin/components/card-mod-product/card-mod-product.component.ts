@@ -138,19 +138,25 @@ export class CardModProductComponent implements OnInit, DoCheck {
         }
       })
     }else{
-      this.authService.uploadImages(this.files).subscribe({
-        next: (resp:any) => {
-          console.log(resp);
-          let urls: string[] =[];
-          for(let i=0; i<resp.images.length;i++){
-            urls[i] = resp.images[i].resourceURL;
-          };
-          this.authService.modProduct(this.id,this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias,urls);
-        },
-        error: (err:any) => {
-          console.log(err.error.messages);
-        }
-      })
+      console.log(this.files.length);
+      if(this.files.length !== 0) {
+        this.authService.uploadImages(this.files).subscribe({
+          next: (resp:any) => {
+            console.log(resp);
+            let urls: string[] =[];
+            for(let i=0; i<resp.images.length;i++){
+              urls[i] = resp.images[i].resourceURL;
+            };
+            this.authService.modProduct(this.id,this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias,urls);
+          },
+          error: (err:any) => {
+            console.log(err.error.messages);
+          }
+        });
+      }else {
+        this.authService.modProduct(this.id,this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias);
+      }
+      
 /*this.authService.modProduct(this.id,this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias, this.sendImagenes);*/    }
   }
 
