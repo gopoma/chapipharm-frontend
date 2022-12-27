@@ -4,6 +4,7 @@ import { Category } from '../../../models/category.interface';
 import { Product } from '../../../models/product.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-card-mod-product',
@@ -135,6 +136,13 @@ export class CardModProductComponent implements OnInit, DoCheck {
             urls[i] = resp.images[i].resourceURL;
           }
           this.authService.createProduct(this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias,urls);
+        },
+        error: (err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error.messages[0],
+          });
         }
       })
     }else{
@@ -149,7 +157,12 @@ export class CardModProductComponent implements OnInit, DoCheck {
             this.authService.modProduct(this.id,this.name,this.laboratory,this.stock,this.price,this.description,this.sendCategorias,urls);
           },
           error: (err:any) => {
-            console.log(err.error.messages);
+            console.log(err.error.messages[0]);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: err.error.messages[0],
+            })
           }
         });
       }else {

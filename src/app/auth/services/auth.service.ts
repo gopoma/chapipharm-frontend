@@ -163,8 +163,13 @@ export class AuthService implements DoCheck{
         console.log(resp);
         this.myProducts.push(resp.product!);
         this.router.navigate(['/admin/products']);
-      }, error => {
-        console.log(error);
+      }, err => {
+        console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.error.messages[0],
+        })
       }) ;
   }
 
