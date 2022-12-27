@@ -1,4 +1,4 @@
-<div class="login__page">
+<!-- <div class="login__page">
   <div class="login__container">
     <h2 class="login__header">Iniciar sesión</h2>
     <form class="login-form">
@@ -14,5 +14,67 @@
     </a>
   </div>
 </div>
+ -->
 
+<div class="container-fluid">
 
+  <div class="card">
+
+    <div class="titulo">
+      <p>Sign In</p>
+    </div>
+    <form (ngSubmit)="login()">
+      <div class="input_email">
+
+        <p class="caja">
+          <mat-form-field class="input_size" appearance="fill">
+            <mat-label>Username or Email</mat-label>
+            <input [(ngModel)]="username" name="username" matInput placeholder="Gunter132">
+          </mat-form-field>
+        </p>
+  
+        <p class="caja">
+          <mat-form-field class="input_size" appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input [(ngModel)]="password" name="password" matInput [type]="hide ? 'password' : 'text'">
+            <p mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon style="cursor: pointer;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </p>
+          </mat-form-field>
+        </p>
+  
+      </div>
+  
+      <div class="button-space">
+        <button type="submit" class="button-form">
+          SIGN IN
+        </button>
+      </div>
+    </form>
+    
+
+    <br>
+    <br>
+
+    <div class="login_google">
+      <p class="text-option">Or login with</p>
+    </div>
+    
+    <div class="login-logos">
+      <ul>
+        <li class="logo-fondo">
+          <a href="https://chapipharm.rj.r.appspot.com/api/auth/facebook">
+            <img class="logo-facebook" src="../../../../assets/facebook.png" >
+          </a>
+        </li>
+        <li class="logo-fondo">
+          <a href="https://chapipharm.rj.r.appspot.com/api/auth/google">
+            <img class="logo" src="../../../../assets/google.png">
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
