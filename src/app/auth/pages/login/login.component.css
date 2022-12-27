@@ -113,7 +113,8 @@
   max-width: 400px;
   width: 100%;
   margin: 0px 20px;
-  height: 550px;
+  max-height: 550px;
+  height: 100%;
 }
 
 .titulo {
