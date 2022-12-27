@@ -7,6 +7,7 @@ import { ProductComponent } from './pharmacy/pages/product/product.component';
 import { ProductosComponent } from './pharmacy/pages/productos/productos.component';
 import { ShopCarComponent } from './payments/pages/shop-car/shop-car.component';
 import { CarlistGuard } from './guards/carlist.guard';
+import { PayComponent } from './payments/pages/pay/pay.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,11 @@ const routes: Routes = [
   },
   {
     path: 'productos', component: ProductosComponent
+  },
+  {
+    path: 'payments', component: PayComponent,
+    canActivate: [ CarlistGuard ],
+    canLoad: [ CarlistGuard ]
   },
   {
     path: 'myCar', component: ShopCarComponent,

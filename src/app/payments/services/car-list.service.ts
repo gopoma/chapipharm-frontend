@@ -9,10 +9,10 @@ export class CarListService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  baseUrl:string = "https://chapipharm.rj.r.appspot.com/api/cart";
+  baseUrl:string = "https://chapipharm.rj.r.appspot.com/api";
 
   addItem(idProduct:string, amount:number) {
-    return this.httpClient.post<any>(`${this.baseUrl}/add`,{
+    return this.httpClient.post<any>(`${this.baseUrl}/cart/add`,{
       idProduct,
       amount
     }, {withCredentials: true});
@@ -26,11 +26,16 @@ export class CarListService {
       },
       withCredentials: true
     }
-    return this.httpClient.delete<any>(`${this.baseUrl}/remove`,httpOptions);
+    return this.httpClient.delete<any>(`${this.baseUrl}/cart/remove`,httpOptions);
   }
 
   getItems() {
-    return this.httpClient.get<any>(`${this.baseUrl}`, {withCredentials: true});
+    return this.httpClient.get<any>(`${this.baseUrl}/cart`, {withCredentials: true});
+  }
+
+
+  getClientSecret() {
+    return this.httpClient.post<any>(`${this.baseUrl}/payments/createStripeIntent`,{}, {withCredentials: true});
   }
 
 }

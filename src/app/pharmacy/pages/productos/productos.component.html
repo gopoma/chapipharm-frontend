@@ -7,7 +7,7 @@
         <img class="product__img" src="{{product.images[0]}}" alt="">
         <h4 class="product__laboratory">{{product.laboratory}}</h4>
         <a routerLink="/products/{{product._id}}" class="product__name">{{product.name}}</a>
-        <p class="product__price">S/. {{product.price}}</p>
+        <p class="product__price">S/. {{product.price/100 | number: "0.2-2"}}</p>
       </article>
     </section>
     <ng-template style="width: 100%; display: flex; justify-content: center; margin: auto;" #showLoading>

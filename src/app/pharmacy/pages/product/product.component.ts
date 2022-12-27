@@ -12,6 +12,7 @@ export class ProductComponent implements OnInit {
   id: string = null!;
   product: any;
 
+  cantidad:number = 1;
 
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -33,8 +34,7 @@ export class ProductComponent implements OnInit {
     });
   }
   addCar(id:string) {
-    console.log(id);
-    this.carlistService.addItem(id, 1)
+    this.carlistService.addItem(id, this.cantidad)
       .subscribe({
         next: (resp) => {
           console.log(resp);
@@ -52,5 +52,15 @@ export class ProductComponent implements OnInit {
       });
   }
 
+  deleteProduct() {
+    if(this.cantidad !== 1) {
+      this.cantidad--;
+    }
+  }
+  addProduct() {
+    if(this.cantidad !== this.product.stock){
+      this.cantidad++;
+    }
+  }
 
 }

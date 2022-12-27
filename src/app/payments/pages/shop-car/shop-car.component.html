@@ -28,7 +28,7 @@
                         </section>
                     </td>
                     <td>
-                        <h3 class="cantidad">$/ {{item.price*item.amount | number: '0.2-2'}}</h3>
+                        <h3 class="cantidad">$/ {{ (item.price*item.amount)/100 | number: '0.2-2'}}</h3>
                     </td>
                     <td>
                         <p (click)="deleteItem(item._id)" class="delete">Eliminar</p>
@@ -44,12 +44,12 @@
                 <hr>
                 <div class="text-space">
                     <p>Total a Pagar</p>
-                    <p>{{ priceTotal | number: '0.2-2' }}</p>
+                    <p>{{ (priceTotal/100) | number: '0.2-2' }}</p>
                 </div>
                 
                 <hr>
                 <div class="button">
-                    <button class="go_payment">
+                    <button routerLink="/payments" class="go_payment">
                         Ir a comprar
                     </button>
                 </div>
