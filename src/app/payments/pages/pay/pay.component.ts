@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarListService } from '../../services/car-list.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pay',
@@ -8,7 +10,7 @@ import { CarListService } from '../../services/car-list.service';
 })
 export class PayComponent implements OnInit {
 
-  constructor(private carListService: CarListService) { }
+  constructor(private carListService: CarListService, private router: Router) { }
 
   stripe: any = (<any>window).Stripe("pk_test_51MJ8wWIABKXrLlD4g82K15Q5ZCADNFHP55mtGqgLbESGe954qZtL7WRf5P893DoAHDLQErUkxNNFirg2UpGvJ8wm00XfgNbNmf");
   elements: any;
@@ -27,6 +29,12 @@ export class PayComponent implements OnInit {
         },
         error: (err) => {
           console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error.messages[0],
+          })
+          this.router.navigateByUrl('/myCar');
         }
       })
   }
@@ -36,7 +44,12 @@ export class PayComponent implements OnInit {
       elements: this.elements,
       redirect: 'if_required'
     });
-    console.log(result);
+    Swal.fire(
+      'Compra realizada con éxito',
+      'Gracias por confiar en nosotros, hasta pronto',
+      'success'
+    );
+    this.router.navigateByUrl('/productos');
   }
 
 }

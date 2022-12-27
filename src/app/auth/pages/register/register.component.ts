@@ -50,6 +50,7 @@ export class RegisterComponent  {
         this.authService.register(this.firstName,this.lastName,this.email,this.password).subscribe({
           next: (resp:any) => {
             console.log(resp);
+            Swal.fire(resp.messages[0]);
           },
           error: (err:any) => {
             console.log(err.error.messages);
@@ -58,6 +59,11 @@ export class RegisterComponent  {
       },
       error: (err:any) => {
         console.log(err.error.messages);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.error.messages,
+        });
       }
     });
     /* this.authService.register(this.firstName,this.lastName,this.email,this.password)
